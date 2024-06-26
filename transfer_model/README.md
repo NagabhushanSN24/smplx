@@ -33,20 +33,33 @@ between the models and the loss function used to estimate the parameters can be
 found [here](./docs/transfer.md).
 
 ## Requirements
+1. Create conda environment with python 3.8
+   ```Shell
+   conda create -n smplx python=3.8
+   ```
+2. Install [mesh](https://github.com/NagabhushanSN24/mpi-is-mesh)
+3. Start by cloning the SMPL-X repo:
+   ```Shell 
+   git clone https://github.com/vchoutas/smplx.git
+   ```
+4. Run the following command to install all necessary requirements
+   ```Shell
+   pip install -r requirements.txt
+   ```
+5. Install the Torch Trust Region optimizer by following the instructions [here](https://github.com/vchoutas/torch-trust-ncg)
+6. Install loguru, open3d, omegaconf, tqdm, trimesh
+   ```shell
+   conda install -c conda-forge loguru open3d omegaconf tqdm trimesh
+   ```
+7. Install chumpy
+      ```shell
+    pip install chumpy
+    ```
+8. If you get an error saying `numpy` has no attribute `bool`, install a previous version of `numpy`
+```bash
+pip3 install mxnet-mkl==1.6.0 numpy==1.23.1
+```
 
-1. Install [mesh](https://github.com/MPI-IS/mesh)
-2. Start by cloning the SMPL-X repo:
-```Shell 
-git clone https://github.com/vchoutas/smplx.git
-```
-3. Run the following command to install all necessary requirements
-```Shell
-    pip install -r requirements.txt
-```
-4. Install the Torch Trust Region optimizer by following the instructions [here](https://github.com/vchoutas/torch-trust-ncg)
-5. Install loguru
-6. Install open3d
-7. Install omegaconf
 
 ## Using the code
 
