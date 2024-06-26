@@ -136,15 +136,16 @@ def main():
     tmp_dirpath = Path('../tmp')
     clean_directory(tmp_dirpath)
 
+    smplx_datapath = Path(args.smplx_datapath)
     # Save the SMPL-X mesh
     meshes_dirpath = tmp_dirpath / 'meshes'
     meshes_dirpath.mkdir(parents=True, exist_ok=True)
-    obj_filepath = meshes_dirpath / f'{args.smplx_datapath.stem}.obj'
-    smplx2obj(args.gender, Path(f'./models/smplx_{args.smplx_version}'), Path(args.smplx_datapath), obj_filepath)
+    obj_filepath = meshes_dirpath / f'{smplx_datapath.stem}.obj'
+    smplx2obj(args.gender, Path(f'./models/smplx_{args.smplx_version}'), smplx_datapath, obj_filepath)
 
     # Save configs for SMPL-X to SMPL conversion
-    config_filepath = tmp_dirpath / f'{args.smplx_datapath.stem}_config.yaml'
-    smpl_pkl_filepath = tmp_dirpath / f'{args.smplx_datapath.stem}_smpl.pkl'
+    config_filepath = tmp_dirpath / f'{smplx_datapath.stem}_config.yaml'
+    smpl_pkl_filepath = tmp_dirpath / f'{smplx_datapath.stem}_smpl.pkl'
     save_configs(config_filepath, meshes_dirpath, args.gender, args.smpl_version, args.smpl_num_betas, smpl_pkl_filepath.parent)
 
     # Run the SMPL-X to SMPL conversion
