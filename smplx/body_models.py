@@ -2344,7 +2344,8 @@ def build_layer(
     '''
 
     if osp.isdir(model_path):
-        model_path = os.path.join(model_path, model_type)
+        # model_path = os.path.join(model_path, model_type)
+        pass
     else:
         model_type = osp.basename(model_path).split('_')[0].lower()
 

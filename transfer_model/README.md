@@ -51,9 +51,9 @@ found [here](./docs/transfer.md).
    ```shell
    conda install -c conda-forge loguru open3d omegaconf tqdm trimesh
    ```
-7. Install chumpy
+7. Install chumpy and pyrender
       ```shell
-    pip install chumpy
+    pip install chumpy pyrender
     ```
 8. If you get an error saying `numpy` has no attribute `bool`, install a previous version of `numpy`
 ```bash

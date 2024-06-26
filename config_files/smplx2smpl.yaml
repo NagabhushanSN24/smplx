@@ -1,6 +1,6 @@
 datasets:
     mesh_folder:
-        data_folder: 'meshes/smplx'
+        data_folder: '../data/samples'
 deformation_transfer_path: 'transfer_data/smplx2smpl_deftrafo_setup.pkl'
 mask_ids_fname: ''
 summary_steps: 100
@@ -12,12 +12,13 @@ optim:
     type: 'lbfgs'
     maxiters: 200
     gtol: 1e-06
+    ftol: 1e-10
 
 body_model:
     model_type: "smpl"
     gender: "neutral"
     ext: 'pkl'
-    folder: "transfer_data/body_models"
+    folder: "./models/smpl_v1_0_0"
     use_compressed: False
     use_face_contour: True
     smpl:
