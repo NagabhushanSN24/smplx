@@ -103,7 +103,7 @@ def save_configs(config_filepath: Path, meshes_dirpath: Path, gender, smpl_versi
 
 
 def read_smplx_data(smplx_datapath: Path):
-    with np.load(smplx_datapath) as smplx_data:
+    with np.load(smplx_datapath, allow_pickle=True) as smplx_data:
         smplx_data = {key: smplx_data[key] for key in smplx_data.files}
     return smplx_data
 
@@ -145,7 +145,7 @@ def main():
 
     # Save configs for SMPL-X to SMPL conversion
     config_filepath = tmp_dirpath / f'{smplx_datapath.stem}_config.yaml'
-    smpl_pkl_filepath = tmp_dirpath / f'{smplx_datapath.stem}_smpl.pkl'
+    smpl_pkl_filepath = tmp_dirpath / f'{smplx_datapath.stem}.pkl'
     save_configs(config_filepath, meshes_dirpath, args.gender, args.smpl_version, args.smpl_num_betas, smpl_pkl_filepath.parent)
 
     # Run the SMPL-X to SMPL conversion

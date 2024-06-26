@@ -40,10 +40,10 @@ def main() -> None:
         device = torch.device('cuda')
     else:
         device = torch.device('cpu')
-        if exp_cfg["use_cuda"]:
-            if input("use_cuda=True and GPU is not available, using CPU instead,"
-                     " would you like to continue? (y/n)") != "y":
-                sys.exit(3)
+        # if exp_cfg["use_cuda"]:
+        #     if input("use_cuda=True and GPU is not available, using CPU instead,"
+        #              " would you like to continue? (y/n)") != "y":
+        #         sys.exit(3)
 
     logger.remove()
     logger.add(
