@@ -112,3 +112,4 @@ models/
 transfer_data/**/*.pkl
 transfer_data/**/*.npy
 transfer_data/**/*.ply
+output/
