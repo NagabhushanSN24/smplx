@@ -1,4 +1,6 @@
-# Saves the SMPLX mesh as obj file. This can be used to feed transfer_model.
+# Saves the SMPL-X mesh as obj file. This can be used to feed transfer_model.
+# https://github.com/vchoutas/smplx/issues/190
+# https://github.com/XueYing126/smplx2smpl-shape/blob/c88c67d0e52229c3a854a16cf7eed18366e58de9/smplx_obj.py
 
 import datetime
 import time
@@ -17,11 +19,10 @@ this_filename = this_filepath.stem
 
 
 def smplx2obj(gender: str, models_dirpath: Path, smplx_datapath: Path, output_filepath: Path):
-    smplx_data = read_smpl_data(smplx_datapath)
+    smplx_data = read_smplx_data(smplx_datapath)
 
     shape_params = smplx_data['shape'][0]  # (11, )
     pose_matrices = smplx_data['body_pose'][0]  # (22, 3, 3)
-    camera_translation = smplx_data['cam_t'][0]  # (3, )
     num_shape_params = shape_params.shape[0]  # = 11
 
     shape_params_tr = torch.from_numpy(shape_params).float().unsqueeze(0)
@@ -42,18 +43,23 @@ def smplx2obj(gender: str, models_dirpath: Path, smplx_datapath: Path, output_fi
     return
 
 
-def read_smpl_data(smplx_datapath: Path):
+def read_smplx_data(smplx_datapath: Path):
     with np.load(smplx_datapath) as smplx_data:
         smplx_data = {key: smplx_data[key] for key in smplx_data.files}
     return smplx_data
 
 
-def main():
-    gender = 'female'
+def demo1():
+    gender = 'neutral'
     models_dirpath = Path('./models/smplx_v1_1')
     smplx_datapath = Path('../data/samples/IMG_0014_0000_smplx.npz')
     output_filepath = Path('../data/samples/IMG_0014_0000_smplx.obj')
     smplx2obj(gender, models_dirpath, smplx_datapath, output_filepath)
+    return
+
+
+def main():
+    demo1()
     return
 
 
